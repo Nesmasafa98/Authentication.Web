@@ -1,22 +1,39 @@
-import { Suspense, lazy } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
+import Dashboard from './pages/Dashboard';
+import ErrorPage from './pages/Error';
+import { usersLoader } from './loaders/usersLoader';
+import { signInAction } from './actions/signIn';
+import { signUpAction } from './actions/signUp';
 
-// Lazy-loaded pages
-const SignIn = lazy(() => import('./pages/SignIn'));
-const SignUp = lazy(() => import('./pages/SignUp'));
-const Dashboard = lazy(() => import('./pages/Dashboard'));
+const router = createBrowserRouter([
+	{
+		path: '/',
+		element: <SignIn />,
+		errorElement: <ErrorPage />
+	},
+	{
+		path: '/signin',
+		element: <SignIn />,
+		action: signInAction
+	},
+	{
+		path: '/signup',
+		element: <SignUp />,
+		action: signUpAction
+	},
+	{
+		path: '/dashboard',
+		element: <Dashboard />,
+		loader: usersLoader,
+		errorElement: <ErrorPage />
+	}
+]);
 
 function App() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Routes>
-        <Route path="/" element={<Navigate to="/signin" />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-      </Routes>
-    </Suspense>
-  );
+	return <RouterProvider router={router}></RouterProvider>;
 }
 
 export default App;
+
