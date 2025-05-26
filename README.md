@@ -35,25 +35,11 @@ npm run dev
 
 -   ✅ Sign Up and Login handled using `<Form method="post" />` from React Router.
 -   🧠 `action()` functions process form submissions, call the backend, and return results.
--   🧾 On success, access and refresh tokens are stored in `localStorage`.
 -   🔁 Custom `AuthContext` manages user state and provides login/logout methods.
 -   🔒 Protected routes are implemented using route guards (like Angular), redirecting unauthenticated users.
 -   🚪 Logout sends a `POST` request to the backend and clears stored tokens.
 
 ---
-
-## 🧪 Form Handling
-
--   All forms use `react-hook-form` for field registration and validation.
--   Native validation used with error messages displayed per field.
--   Frontend validations occur before calling the backend `action()` handler.
-
----
-
-## 🔧 Scripts
-
--   `npm run dev` – Start development server
--   `npm run build` – Create production-ready build
 
 ---
 
