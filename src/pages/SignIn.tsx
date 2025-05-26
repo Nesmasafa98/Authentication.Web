@@ -2,6 +2,7 @@ import { Form, useActionData, useNavigate, useNavigation } from 'react-router-do
 import AuthLayout from '../layouts/AuthLayout';
 import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { Link } from 'react-router-dom';
 
 const SignIn = () => {
 	const navigation = useNavigation();
@@ -28,23 +29,23 @@ const SignIn = () => {
 	}, [actionData, signin, navigate]);
 
 	return (
-		<AuthLayout title="Welcome Back">
+		<AuthLayout title="Sign in">
 			<Form method="post" noValidate>
 				<div className="mb-4">
-					<label className="block text-sm font-medium mb-1">Email</label>
+					<label className="block text-sm font-light mb-2">Email</label>
 					<input
 						type="email"
 						name="email"
-						className="w-full border px-3 py-2 rounded"
+						className="w-full border border-gray-400 px-3 py-2 rounded bg-transparent focus:outline-none focus:ring-0"
 						placeholder="john.doe@example.com"
 					/>
 				</div>
 				<div className="mb-6">
-					<label className="block text-sm font-medium mb-1">Password</label>
+					<label className="block text-sm font-light mb-2 text-md">Password</label>
 					<input
 						type="password"
 						name="password"
-						className="w-full border px-3 py-2 rounded"
+						className="w-full border border-gray-400 px-3 py-2 rounded bg-transparent focus:outline-none focus:ring-0"
 						placeholder="••••••••"
 					/>
 				</div>
@@ -54,10 +55,16 @@ const SignIn = () => {
 				<button
 					type="submit"
 					disabled={isLoading}
-					className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
+					className="w-full bg-[#fb794c] text-white py-2 rounded hover:bg-[#fb784cdb] transition font-medium">
 					Sign In
 				</button>
 			</Form>
+			<div className="flex items-center text-sm mt-8">
+				<p className="mr-2 text-gray-600">Don't have an account?</p>
+				<Link to="/signup" className="hover:underline">
+					Sign Up
+				</Link>
+			</div>
 		</AuthLayout>
 	);
 };

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { authService } from '../services/authService';
@@ -13,12 +12,13 @@ const Dashboard = () => {
 			await authService.logout();
 			logout();
 			navigate('/signin');
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		} catch (error: any) {
 			// show a toast or alert here
 			console.error('Logout failed:', error);
 
 			// no action if its due to network error
-			if (!error.response) return;
+			if (!error?.response) return;
 
 			logout();
 			navigate('/signin');

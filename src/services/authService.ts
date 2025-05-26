@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from 'axios';
 import axiosInstance from './axiosService';
 
@@ -23,10 +22,10 @@ export const authService = {
 		try {
 			const response = await axiosInstance.post('/auth/signup', data);
 			return { data: response.data.data };
-		} catch (error: any) {
+		} catch (error) {
 			if (axios.isAxiosError(error)) {
 				return {
-					error: error.response?.data?.message || 'Something went wrong'
+					error: error.response?.data?.error || 'Something went wrong'
 				};
 			}
 			return { error: 'Failed to sign up. Please try again.' };
@@ -36,9 +35,9 @@ export const authService = {
 		try {
 			const response = await axiosInstance.post('/auth/signin', data);
 			return { data: response.data.data };
-		} catch (error: any) {
+		} catch (error) {
 			if (axios.isAxiosError(error)) {
-				return { error: error.response?.data?.message || 'Something went wrong' };
+				return { error: error.response?.data?.error || 'Something went wrong' };
 			}
 			return { error: 'Failed to sign in. Please try again.' };
 		}

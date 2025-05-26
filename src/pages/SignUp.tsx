@@ -2,6 +2,7 @@ import AuthLayout from '../layouts/AuthLayout';
 import { Form, useActionData, useNavigate, useNavigation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const SignUp = () => {
 	const navigation = useNavigation();
@@ -31,26 +32,31 @@ const SignUp = () => {
 		<AuthLayout title="Create an Account">
 			<Form method="post" noValidate>
 				<div className="mb-4">
-					<label className="block text-sm font-medium mb-1">Email</label>
+					<label className="block text-sm font-light mb-2 text-md">Email</label>
 					<input
 						type="email"
-						className="w-full border px-3 py-2 rounded"
+						className="w-full border border-gray-400 px-3 py-2 rounded bg-transparent focus:outline-none focus:ring-0"
 						placeholder="john.doe@example.com"
 						name="email"
 					/>
 				</div>
 
 				<div className="mb-4">
-					<label className="block text-sm font-medium mb-1">Name</label>
-					<input type="text" name="name" className="w-full border px-3 py-2 rounded" placeholder="John Doe" />
+					<label className="block text-sm font-light mb-2 text-md">Name</label>
+					<input
+						type="text"
+						name="name"
+						className="w-full border border-gray-400 px-3 py-2 rounded bg-transparent focus:outline-none focus:ring-0"
+						placeholder="John Doe"
+					/>
 				</div>
 
 				<div className="mb-4">
-					<label className="block text-sm font-medium mb-1">Password</label>
+					<label className="block text-sm font-light mb-2 text-md">Password</label>
 					<input
 						type="password"
 						name="password"
-						className="w-full border px-3 py-2 rounded"
+						className="w-full border border-gray-400 px-3 py-2 rounded bg-transparent focus:outline-none focus:ring-0"
 						placeholder="Create a password"
 					/>
 				</div>
@@ -60,10 +66,16 @@ const SignUp = () => {
 				<button
 					type="submit"
 					disabled={isLoading}
-					className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition">
+					className="w-full bg-[#fb794c] text-white py-2 rounded hover:bg-[#fb784cdb] transition font-medium">
 					Sign Up
 				</button>
 			</Form>
+			<div className="flex items-center text-sm mt-8">
+				<p className="mr-2 text-gray-600">Already have an account?</p>
+				<Link to="/signin" className="mr-4 hover:underline">
+					Sign In
+				</Link>
+			</div>
 		</AuthLayout>
 	);
 };

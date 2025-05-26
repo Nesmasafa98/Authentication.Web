@@ -1,4 +1,3 @@
-// src/pages/Error.tsx
 import { isRouteErrorResponse, useRouteError } from 'react-router-dom';
 
 const ErrorPage = () => {
