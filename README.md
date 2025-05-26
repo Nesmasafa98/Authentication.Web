@@ -1,54 +1,63 @@
-# React + TypeScript + Vite
+# React Auth App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, full-featured authentication app built with:
 
-Currently, two official plugins are available:
+-   ⚛️ **React** + **TypeScript**
+-   ⚡ **Vite** for fast dev builds
+-   🎨 **Tailwind CSS** for styling
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 1. Clone the repository
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd Authentication.Web
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Install dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm install
 ```
+
+### 3. Start the development server
+
+```bash
+npm run dev
+```
+
+---
+
+## 🔐 Authentication Flow
+
+-   ✅ Sign Up and Login handled using `<Form method="post" />` from React Router.
+-   🧠 `action()` functions process form submissions, call the backend, and return results.
+-   🧾 On success, access and refresh tokens are stored in `localStorage`.
+-   🔁 Custom `AuthContext` manages user state and provides login/logout methods.
+-   🔒 Protected routes are implemented using route guards (like Angular), redirecting unauthenticated users.
+-   🚪 Logout sends a `POST` request to the backend and clears stored tokens.
+
+---
+
+## 🧪 Form Handling
+
+-   All forms use `react-hook-form` for field registration and validation.
+-   Native validation used with error messages displayed per field.
+-   Frontend validations occur before calling the backend `action()` handler.
+
+---
+
+## 🔧 Scripts
+
+-   `npm run dev` – Start development server
+-   `npm run build` – Create production-ready build
+
+---
+
+And update your fetch URLs accordingly using `import.meta.env.VITE_API_URL`.
+
+---
+
