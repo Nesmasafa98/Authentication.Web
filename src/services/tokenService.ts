@@ -2,6 +2,8 @@ const ACCESS_TOKEN_KEY = 'access_token';
 const REFRESH_TOKEN_KEY = 'refresh_token';
 const USER_DATA = 'user_data';
 
+// NOTE: Local storage are not considered as the best option for storing tokens.
+// NOTE: It's just an example of how use tokens for demo purposes.
 export const tokenService = {
 	getAccessToken: () => localStorage.getItem(ACCESS_TOKEN_KEY),
 	setAccessToken: (token: string) => localStorage.setItem(ACCESS_TOKEN_KEY, token),
